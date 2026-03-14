@@ -15,31 +15,31 @@ The goal is to evaluate security posture, identify compliance gaps, and document
 
 ## What I Did
 
-1. Built a controlled lab environment 
+# Built a controlled lab environment 
    - Deployed Windows and Linux virtual machines for compliance testing.  
    - Secured access using Bastion and restricted network traffic with NSGs.
 
-2. Configured compliance scanning in Tenable.io 
+# Configured compliance scanning in Tenable.io 
    - Enabled and used STIG compliance plugins to perform baseline checks.  
    - Selected appropriate DISA STIG benchmarks for the target systems.
 
-3. Created a custom compliance scan template
+# Created a custom compliance scan template
    - Built a reusable scan template tailored for STIG compliance audits.  
    - Adjusted scan settings to ensure consistent and repeatable assessments.
 
-4. Ran STIG compliance audits
+# Ran STIG compliance audits
    - Executed compliance scans to assess system alignment with DISA STIG requirements.  
    - Identified compliant and non-compliant controls across the systems.
 
-5. Reviewed and analyzed results
+# Reviewed and analyzed results
    - Analyzed failed and passed controls to understand configuration gaps.  
    - Prioritized findings based on security impact and compliance requirements.
 
-6. Applied remediation and hardening
+# Applied remediation and hardening
    - Updated system configurations to address non-compliant findings.  
    - Re-ran compliance scans to validate improvements.
 
-7. Documented findings and outcomes
+# Documented findings and outcomes
    - Recorded scan results, remediation steps, and observations.  
    - Captured screenshots and reports for reference and audit tracking.
 
@@ -57,10 +57,4 @@ The goal is to evaluate security posture, identify compliance gaps, and document
 
 ### STIG Scan Template Configuration
 ![STIG Scan Template](screenshots/stig-scan-template.png)
-
-### Compliance Scan Results
-![Compliance Results](screenshots/stig-results.png)
-
-### Remediation Validation Scan
-![Validation Scan](screenshots/stig-validation.png)
 
