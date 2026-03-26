@@ -79,20 +79,6 @@ To eliminate human error and ensure repeatable compliance, I developed 10 profes
 
 ---
 
-## 📸 Evidence & Results
-
-### STIG Scan Template Configuration
-*Description: Custom Tenable.io template configured with Windows 11 STIG Audit files.*
-![STIG Scan Template] <img width="1366" height="613" alt="image" src="https://github.com/user-attachments/assets/bedb18e9-9762-4810-8fb8-05cdede8d9bd" />
-
-
-### Successful Remediation (Example: WN11-AU-000500)
-*Description: Evidence of PowerShell script execution resulting in the mandatory 32MB Application Log size (33,554,432 Bytes).*
-![PowerShell Execution] <img width="1366" height="601" alt="image" src="https://github.com/user-attachments/assets/f699414a-40b2-4074-86d5-c4f62241703a" />
-
-
----
-
 ## 🔗 Connect with Me
 - **LinkedIn:** [Yemisi Daodu](https://www.linkedin.com/in/yemisi-daodu/)
 - **GitHub:** [yemisi-cybernate1](https://github.com/yemisi-cybernate1)
