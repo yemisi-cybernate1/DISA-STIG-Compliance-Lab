@@ -1,30 +1,31 @@
 <#
 .SYNOPSIS
-    PS4: Remediates DISA STIG WN11-AC-000010 (Account Lockout Duration).
-    
-.DESCRIPTION
-    Ensures that an account remains locked for a minimum of 15 minutes
-    to prevent automated rapid-fire brute-force attacks.
+    This PowerShell script ensures the Account Lockout Duration is set to 15 minutes or greater.
 
 .NOTES
-    Author       : Yemisi Daodu
-    Lab Step     : PS4 of 10
-    STIG-ID      : WN11-AC-000010
-    Date         : 2026-03-26
+    Author          : Yemisi Daodu
+    LinkedIn        : https://www.linkedin.com/in/yemisi-daodu/
+    GitHub          : https://github.com/yemisi-cybernate1
+    Date Created    : 2026-03-26
+    Last Modified   : 2026-03-26
+    Version         : 1.0
+    STIG-ID         : WN11-AC-000010
+
+.TESTED ON
+    Systems Tested  : Windows 11
+    PowerShell Ver. : 5.1 / 7.x
 #>
 
-Write-Host "--- Executing PS4: Setting Lockout Duration (WN11-AC-000010) ---" -ForegroundColor Cyan
+# --- REMEDIATION CODE START ---
+Write-Host "--- Applying STIG Fix: Account Lockout Duration ---" -ForegroundColor Cyan
 
-# 1. Apply the fix using the 'net accounts' command
-# /lockoutduration:15 sets the time the account stays locked.
-# /lockoutwindow:15 sets the time before the fail counter resets.
+# 1. Set duration and reset window to 15 minutes
 net accounts /lockoutduration:15 /lockoutwindow:15
 
-# 2. Force Policy Update
+# 2. Refresh Group Policy
 gpupdate /force
 
-# 3. Verification Output (This confirms the change in the console)
-Write-Host "`n[VERIFICATION] Current Account Policy Settings:" -ForegroundColor Yellow
-net accounts | Select-String "Lockout duration"
-
-Write-Host "`n[SUCCESS] PS4 Applied. Account Lockout Duration is now 15 minutes." -ForegroundColor Green
+# 3. Final verification
+$check = net accounts | Select-String "Lockout duration"
+Write-Host "Success: $check" -ForegroundColor Green
+# --- REMEDIATION CODE END ---
