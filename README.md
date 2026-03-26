@@ -63,7 +63,8 @@ This project demonstrates the end-to-end process of assessing, auditing, and rem
 
 ### Successful Remediation (Example: WN11-AU-000500)
 *Description: Evidence of PowerShell script execution resulting in the mandatory 32MB Application Log size (33,554,432 Bytes).*
-![PowerShell Execution](screenshots/powershell-ise-result.png)
+![PowerShell Execution] <img width="1366" height="601" alt="image" src="https://github.com/user-attachments/assets/f699414a-40b2-4074-86d5-c4f62241703a" />
+
 
 ---
 
