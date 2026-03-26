@@ -1,33 +1,41 @@
 <#
 .SYNOPSIS
-    PS3: Remediates DISA STIG WN11-CC-000110 (Disable HTTP Printing).
-    
-.DESCRIPTION
-    This script disables the Internet Printing Client by modifying the 
-    relevant Policy Registry key. This reduces the network attack surface.
+    This PowerShell script disables HTTP Printing (Internet Printing Protocol) to reduce the attack surface.
 
 .NOTES
-    Author       : Yemisi Daodu
-    Lab Step     : PS3 of 10
-    STIG-ID      : WN11-CC-000110
-    Date         : 2026-03-26
+    Author          : Yemisi Daodu
+    LinkedIn        : https://www.linkedin.com/in/yemisi-daodu/
+    GitHub          : https://github.com/yemisi-cybernate1
+    Date Created    : 2026-03-26
+    Last Modified   : 2026-03-26
+    Version         : 1.0
+    STIG-ID         : WN11-CC-000110
+
+.TESTED ON
+    Systems Tested  : Windows 11
+    PowerShell Ver. : 5.1 / 7.x
+
+.USAGE
+    Run as Administrator. 
 #>
 
-Write-Host "--- Executing PS3: Disabling HTTP Printing (WN11-CC-000110) ---" -ForegroundColor Cyan
-
+# --- REMEDIATION CODE START ---
 $regPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Printers"
+$name = "DisableWebPrinting"
+$value = 1
 
-# 1. Create the Registry Path if it does not exist (Policies are often missing by default)
+Write-Host "--- Applying STIG Fix: Disable HTTP Printing ---" -ForegroundColor Cyan
+
+# 1. Ensure the correct path exists
 if (!(Test-Path $regPath)) {
     New-Item -Path $regPath -Force | Out-Null
-    Write-Host "[INFO] Created missing Policy path: $regPath" -ForegroundColor Gray
 }
 
-# 2. Set 'DisableWebPrinting' to 1 (True/Enabled)
-# Note: Setting this to 1 tells Windows to "Enable the Disable" rule.
-Set-ItemProperty -Path $regPath -Name "DisableWebPrinting" -Value 1 -Type DWord -Force
+# 2. Set 'DisableWebPrinting' to 1 (Enabled/True)
+Set-ItemProperty -Path $regPath -Name $name -Value $value -Type DWord
 
-# 3. Refresh Group Policy to apply the change immediately
+# 3. Refresh Group Policy
 gpupdate /force
 
-Write-Host "`n[SUCCESS] PS3 Applied. HTTP Printing is now disabled." -ForegroundColor Green
+Write-Host "`nSuccess: HTTP Printing has been disabled." -ForegroundColor Green
+# --- REMEDIATION CODE END ---
