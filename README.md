@@ -58,7 +58,8 @@ This project demonstrates the end-to-end process of assessing, auditing, and rem
 
 ### STIG Scan Template Configuration
 *Description: Custom Tenable.io template configured with Windows 11 STIG Audit files.*
-![STIG Scan Template](screenshots/stig-scan-template.png)
+![STIG Scan Template] <img width="1366" height="613" alt="image" src="https://github.com/user-attachments/assets/bedb18e9-9762-4810-8fb8-05cdede8d9bd" />
+
 
 ### Successful Remediation (Example: WN11-AU-000500)
 *Description: Evidence of PowerShell script execution resulting in the mandatory 32MB Application Log size (33,554,432 Bytes).*
