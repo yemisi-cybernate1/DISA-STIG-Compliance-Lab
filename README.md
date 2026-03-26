@@ -10,7 +10,7 @@ This project demonstrates the end-to-end process of assessing, auditing, and rem
 * **Compliance Framework:** DISA STIG Windows 11 Benchmarks
 * **Automation/Scripting:** PowerShell ISE (Professional Remediation)
 * **Infrastructure:** Microsoft Azure (VMs, NSGs, Azure Bastion)
-* **Remote Management:** RDP & Windows Remote Management
+* **Remote Management:** RDP & Windows Remote Management (WinRM)
 
 ---
 
@@ -26,12 +26,10 @@ This project demonstrates the end-to-end process of assessing, auditing, and rem
 * **Audit Selection:** Integrated official DISA STIG Audit Files to benchmark system security.
 * **Baseline Assessment:** Executed initial scans to identify "High" and "Medium" severity non-compliance findings (e.g., Audit Log sizes, Account Lockout policies).
 
-### 3. Automated Remediation (The "Engineering" Phase)
-* **Root Cause Analysis:** Identified configuration drift and "False Negatives" caused by manual Registry naming errors (e.g., `Event log` vs. `EventLog`).
-* **Script Development:** Authored professional PowerShell remediation scripts in **PowerShell ISE** to:
-    * Programmatically create and verify Registry hives.
-    * Enforce exact DWORD values for STIG requirements (e.g., Application Log size = 32768 KB).
-    * Force System Policy refreshes (`gpupdate /force`) and EventLog service restarts.
+### 3. Remediation Strategy: Manual to Automated
+* **Manual Validation:** Initially performed manual Registry edits to verify STIG compliance requirements. During this phase, I identified a critical configuration pitfall where a syntax error (using `Event log` with a space instead of the required `EventLog`) caused remediation failure in the scan.
+* **Root Cause Analysis:** Confirmed that the Windows Event Viewer service and Tenable.io compliance plugins specifically require exact Registry key pathing (`...\EventLog\Application`) to acknowledge policy changes.
+* **PowerShell Automation:** Developed professional remediation scripts in **PowerShell ISE** to eliminate human error. These scripts programmatically build the correct Registry hierarchy, set mandatory DWORD values, and force a system-wide policy refresh.
 * **Version Control:** Managed all remediation scripts via GitHub for auditability and peer review.
 
 ### 4. Validation & Reporting
@@ -43,8 +41,8 @@ This project demonstrates the end-to-end process of assessing, auditing, and rem
 ## 🧠 Skills Demonstrated
 * **Security Engineering:** Translating complex DISA STIG requirements into technical configurations.
 * **PowerShell Automation:** Scaling security fixes across an enterprise environment using `.ps1` scripting.
+* **Troubleshooting:** Identifying "False Negatives" caused by Registry syntax and character spacing errors.
 * **Compliance Auditing:** Mastering Tenable.io template creation and audit file integration.
-* **Cloud Infrastructure:** Managing Virtual Machines, Network Security Groups, and secure entry points.
 * **Technical Documentation:** Maintaining clean, commented code and detailed lab reports.
 
 ---
